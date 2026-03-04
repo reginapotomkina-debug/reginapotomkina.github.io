@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regina Potomkina</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+}
+header {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+.gallery {
+    column-count: 3;
+    column-gap: 15px;
+    padding: 20px;
+}
+.gallery img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 14px;
+}
+@media(max-width: 900px){
+    .gallery { column-count: 2; }
+}
+@media(max-width: 600px){
+    .gallery { column-count: 1; }
+}
+</style>
+</head>
+<body>
+
+<header>REGINA POTOMKINA</header>
+
+<section class="gallery">
+<img src="bild1.jpg">
+<img src="bild2.jpg">
+<img src="bild3.jpg">
+</section>
+
+<footer>
+Kontakt: deineemail@email.de
+</footer>
+
+</body>
+</html>
