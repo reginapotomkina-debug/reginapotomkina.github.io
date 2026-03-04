@@ -8,8 +8,8 @@
 body {
     margin:0;
     font-family: Arial, sans-serif;
-    background: white;
-    color: black;
+    background:white;
+    color:black;
 }
 header {
     text-align:center;
@@ -51,30 +51,25 @@ nav a {
 @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.gallery{grid-template-columns:1fr;}}
 
-/* Lightbox: Bild vollständig anzeigen, zentriert und nicht beschnitten */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 999;
+/* Lightbox Overlay */
+#lightbox-overlay {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.95);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
 }
-.lightbox img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Sichtbar ohne Beschneiden */
-    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+#lightbox-overlay img {
+    max-width:90%;
+    max-height:90%;
+    object-fit:contain;
+    box-shadow:0 0 20px #000;
 }
-.lightbox:target { display: flex; }
 
+/* Footer */
 footer {
     text-align:center;
     padding:40px;
@@ -90,41 +85,42 @@ footer {
 </nav>
 
 <section class="gallery">
-    <a href="#img1"><img src="Bild1.jpg" alt="Bild 1"></a>
-    <a href="#img2"><img src="bild2.jpg" alt="Bild 2"></a>
-    <a href="#img3"><img src="bild3.jpg" alt="Bild 3"></a>
-    <a href="#img4"><img src="bild4.jpg" alt="Bild 4"></a>
-    <a href="#img5"><img src="bild5.jpg" alt="Bild 5"></a>
-    <a href="#img6"><img src="bild6.jpg" alt="Bild 6"></a>
-    <a href="#img7"><img src="bild7.jpg" alt="Bild 7"></a>
-    <a href="#img8"><img src="bild8.png" alt="Bild 8"></a>
-    <a href="#img9"><img src="bild9.jpg" alt="Bild 9"></a>
-    <a href="#img10"><img src="bild10.jpg" alt="Bild 10"></a>
-    <a href="#img11"><img src="bild11.png" alt="Bild 11"></a>
-    <a href="#img12"><img src="bild12.png" alt="Bild 12"></a>
-    <a href="#img13"><img src="bild13.jpg" alt="Bild 13"></a>
-    <a href="#img14"><img src="bild14.jpg" alt="Bild 14"></a>
-    <a href="#img15"><img src="bild15.jpg" alt="Bild 15"></a>
-    <a href="#img16"><img src="bild16.jpg" alt="Bild 16"></a>
+    <img src="Bild1.jpg" alt="Bild 1" class="lightbox-trigger">
+    <img src="bild2.jpg" alt="Bild 2" class="lightbox-trigger">
+    <img src="bild3.jpg" alt="Bild 3" class="lightbox-trigger">
+    <img src="bild4.jpg" alt="Bild 4" class="lightbox-trigger">
+    <img src="bild5.jpg" alt="Bild 5" class="lightbox-trigger">
+    <img src="bild6.jpg" alt="Bild 6" class="lightbox-trigger">
+    <img src="bild7.jpg" alt="Bild 7" class="lightbox-trigger">
+    <img src="bild8.png" alt="Bild 8" class="lightbox-trigger">
+    <img src="bild9.jpg" alt="Bild 9" class="lightbox-trigger">
+    <img src="bild10.jpg" alt="Bild 10" class="lightbox-trigger">
+    <img src="bild11.png" alt="Bild 11" class="lightbox-trigger">
+    <img src="bild12.png" alt="Bild 12" class="lightbox-trigger">
+    <img src="bild13.jpg" alt="Bild 13" class="lightbox-trigger">
+    <img src="bild14.jpg" alt="Bild 14" class="lightbox-trigger">
+    <img src="bild15.jpg" alt="Bild 15" class="lightbox-trigger">
+    <img src="bild16.jpg" alt="Bild 16" class="lightbox-trigger">
 </section>
 
-<!-- Lightbox -->
-<div id="img1" class="lightbox"><a href="#"><img src="Bild1.jpg"></a></div>
-<div id="img2" class="lightbox"><a href="#"><img src="bild2.jpg"></a></div>
-<div id="img3" class="lightbox"><a href="#"><img src="bild3.jpg"></a></div>
-<div id="img4" class="lightbox"><a href="#"><img src="bild4.jpg"></a></div>
-<div id="img5" class="lightbox"><a href="#"><img src="bild5.jpg"></a></div>
-<div id="img6" class="lightbox"><a href="#"><img src="bild6.jpg"></a></div>
-<div id="img7" class="lightbox"><a href="#"><img src="bild7.jpg"></a></div>
-<div id="img8" class="lightbox"><a href="#"><img src="bild8.png"></a></div>
-<div id="img9" class="lightbox"><a href="#"><img src="bild9.jpg"></a></div>
-<div id="img10" class="lightbox"><a href="#"><img src="bild10.jpg"></a></div>
-<div id="img11" class="lightbox"><a href="#"><img src="bild11.png"></a></div>
-<div id="img12" class="lightbox"><a href="#"><img src="bild12.png"></a></div>
-<div id="img13" class="lightbox"><a href="#"><img src="bild13.jpg"></a></div>
-<div id="img14" class="lightbox"><a href="#"><img src="bild14.jpg"></a></div>
-<div id="img15" class="lightbox"><a href="#"><img src="bild15.jpg"></a></div>
-<div id="img16" class="lightbox"><a href="#"><img src="bild16.jpg"></a></div>
+<!-- Lightbox Overlay -->
+<div id="lightbox-overlay">
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+const overlay = document.getElementById('lightbox-overlay');
+const overlayImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.lightbox-trigger').forEach(img => {
+  img.addEventListener('click', () => {
+    overlay.style.display = 'flex';
+    overlayImg.src = img.src;
+  });
+});
+overlay.addEventListener('click', () => {
+  overlay.style.display = 'none';
+});
+</script>
 
 <footer>
 Kontakt: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
@@ -132,5 +128,3 @@ Kontakt: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
 
 </body>
 </html>
-
-
