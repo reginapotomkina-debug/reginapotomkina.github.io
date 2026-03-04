@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Regina Potomkina</title>
+
 <style>
 body {
     margin:0;
@@ -11,6 +12,8 @@ body {
     background:white;
     color:black;
 }
+
+/* HEADER */
 header {
     text-align:center;
     padding:40px 20px;
@@ -21,9 +24,11 @@ header a {
     text-decoration:none;
     color:black;
 }
+
+/* NAV */
 nav {
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 nav a {
     margin:0 10px;
@@ -32,7 +37,7 @@ nav a {
     font-weight:bold;
 }
 
-/* Galerie */
+/* GALLERY GRID */
 .gallery {
     display:grid;
     grid-template-columns: repeat(3,1fr);
@@ -44,91 +49,92 @@ nav a {
     aspect-ratio:1/1;
     object-fit:cover;
     cursor:pointer;
-    transition: transform 0.3s ease;
+    transition:0.3s;
 }
-.gallery img:hover { transform: scale(1.05); }
-
-@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.gallery{grid-template-columns:1fr;}}
-
-/* Lightbox Overlay */
-#lightbox-overlay {
-    display: none;   /* WICHTIG: nur einmal! */
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-sizing: border-box;
-    z-index: 9999;
+.gallery img:hover {
+    transform:scale(1.05);
 }
 
-#lightbox-overlay.active {
-    display: flex;   /* Nur wenn aktiv */
+@media(max-width:900px){
+    .gallery{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+    .gallery{grid-template-columns:1fr;}
 }
 
-#lightbox-overlay img {
-    max-height: 85vh;
-    max-width: 90vw;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+/* LIGHTBOX */
+#overlay {
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.95);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
 }
 
-/* Footer */
+#overlay img {
+    max-height:85vh;
+    max-width:90vw;
+    object-fit:contain;
+}
+
+/* FOOTER */
 footer {
     text-align:center;
-    padding:40px;
+    padding:60px 20px;
     font-size:14px;
 }
 </style>
 </head>
+
 <body>
 
-<header><a href="/">REGINA POTOMKINA</a></header>
+<header>
+    <a href="/">REGINA POTOMKINA</a>
+</header>
+
 <nav>
     <a href="/">Gallery</a> | <a href="cv.html">CV</a>
 </nav>
 
 <section class="gallery">
-    <img src="Bild1.jpg" alt="Bild 1" class="lightbox-trigger">
-    <img src="bild2.jpg" alt="Bild 2" class="lightbox-trigger">
-    <img src="bild3.jpg" alt="Bild 3" class="lightbox-trigger">
-    <img src="bild4.jpg" alt="Bild 4" class="lightbox-trigger">
-    <img src="bild5.jpg" alt="Bild 5" class="lightbox-trigger">
-    <img src="bild6.jpg" alt="Bild 6" class="lightbox-trigger">
-    <img src="bild7.jpg" alt="Bild 7" class="lightbox-trigger">
-    <img src="bild8.png" alt="Bild 8" class="lightbox-trigger">
-    <img src="bild9.jpg" alt="Bild 9" class="lightbox-trigger">
-    <img src="bild10.jpg" alt="Bild 10" class="lightbox-trigger">
-    <img src="bild11.png" alt="Bild 11" class="lightbox-trigger">
-    <img src="bild12.png" alt="Bild 12" class="lightbox-trigger">
-    <img src="bild13.jpg" alt="Bild 13" class="lightbox-trigger">
-    <img src="bild14.jpg" alt="Bild 14" class="lightbox-trigger">
-    <img src="bild15.jpg" alt="Bild 15" class="lightbox-trigger">
-    <img src="bild16.jpg" alt="Bild 16" class="lightbox-trigger">
+    <img src="Bild1.jpg">
+    <img src="bild2.jpg">
+    <img src="bild3.jpg">
+    <img src="bild4.jpg">
+    <img src="bild5.jpg">
+    <img src="bild6.jpg">
+    <img src="bild7.jpg">
+    <img src="bild8.png">
+    <img src="bild9.jpg">
+    <img src="bild10.jpg">
+    <img src="bild11.png">
+    <img src="bild12.png">
+    <img src="bild13.jpg">
+    <img src="bild14.jpg">
+    <img src="bild15.jpg">
+    <img src="bild16.jpg">
 </section>
 
-<!-- Lightbox Overlay -->
-<div id="lightbox-overlay">
-    <img id="lightbox-img" src="">
+<div id="overlay">
+    <img id="overlay-img">
 </div>
 
 <script>
-const overlay = document.getElementById("lightbox-overlay");
-const overlayImg = document.getElementById("lightbox-img");
+const overlay = document.getElementById("overlay");
+const overlayImg = document.getElementById("overlay-img");
 
-document.querySelectorAll(".lightbox-trigger").forEach(img => {
+document.querySelectorAll(".gallery img").forEach(img => {
     img.addEventListener("click", () => {
-        overlay.classList.add("active");
+        overlay.style.display = "flex";
         overlayImg.src = img.src;
         document.body.style.overflow = "hidden";
     });
 });
 
 overlay.addEventListener("click", () => {
-    overlay.classList.remove("active");
+    overlay.style.display = "none";
     overlayImg.src = "";
     document.body.style.overflow = "auto";
 });
@@ -140,5 +146,3 @@ Kontakt: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
 
 </body>
 </html>
-
-
