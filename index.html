@@ -5,87 +5,76 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Regina Potomkina</title>
 <style>
-/* Grundstyles */
 body {
-    margin: 0;
+    margin:0;
     font-family: Arial, sans-serif;
     background: white;
     color: black;
 }
 header {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 28px;
-    letter-spacing: 2px;
+    text-align:center;
+    padding:40px 20px;
+    font-size:28px;
+    letter-spacing:2px;
 }
 header a {
-    text-decoration: none;
-    color: black;
+    text-decoration:none;
+    color:black;
 }
 nav {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align:center;
+    margin-bottom:20px;
 }
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
+    margin:0 10px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
 }
 
-/* Galerie-Grid */
+/* Galerie */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 20px;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:15px;
+    padding:20px;
 }
 .gallery img {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* quadratische Vorschau */
-    object-fit: cover;    /* Bild passend zuschneiden */
-    cursor: pointer;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    cursor:pointer;
     transition: transform 0.3s ease;
 }
-.gallery img:hover {
-    transform: scale(1.05);
-}
+.gallery img:hover { transform: scale(1.05); }
 
-/* Responsive */
-@media(max-width: 900px){
-    .gallery { grid-template-columns: repeat(2,1fr); }
-}
-@media(max-width: 600px){
-    .gallery { grid-template-columns: 1fr; }
-}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.gallery{grid-template-columns:1fr;}}
 
 /* Lightbox */
 .lightbox {
-    position: fixed;
-    top:0; left:0;
+    display:none;
+    position:fixed;
+    top:0;left:0;
     width:100%;
     height:100%;
-    background: rgba(0,0,0,0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+    background:rgba(0,0,0,0.9);
+    align-items:center;
+    justify-content:center;
+    z-index:999;
 }
 .lightbox img {
-    width: auto;
-    height: auto;
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain; /* Originalbild korrekt anzeigen */
-    box-shadow: 0 0 20px #000;
+    max-width:90%;
+    max-height:90%;
+    object-fit:contain;
+    box-shadow:0 0 20px #000;
 }
-.lightbox:target { display: flex; }
+.lightbox:target { display:flex; }
 
-/* Footer */
 footer {
-    text-align: center;
-    padding: 40px;
-    font-size: 14px;
+    text-align:center;
+    padding:40px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -115,23 +104,23 @@ footer {
     <a href="#img16"><img src="bild16.jpg" alt="Bild 16"></a>
 </section>
 
-<!-- Lightbox-Bilder -->
+<!-- Lightbox -->
 <div id="img1" class="lightbox"><a href="#"><img src="Bild1.jpg"></a></div>
-<div id="img2" class="lightbox"><a href="#"><img src="Bild2.jpg"></a></div>
-<div id="img3" class="lightbox"><a href="#"><img src="Bild3.jpg"></a></div>
-<div id="img4" class="lightbox"><a href="#"><img src="Bild4.jpg"></a></div>
-<div id="img5" class="lightbox"><a href="#"><img src="Bild5.jpg"></a></div>
-<div id="img6" class="lightbox"><a href="#"><img src="Bild6.jpg"></a></div>
-<div id="img7" class="lightbox"><a href="#"><img src="Bild7.jpg"></a></div>
-<div id="img8" class="lightbox"><a href="#"><img src="Bild8.png"></a></div>
-<div id="img9" class="lightbox"><a href="#"><img src="Bild9.jpg"></a></div>
-<div id="img10" class="lightbox"><a href="#"><img src="Bild10.jpg"></a></div>
-<div id="img11" class="lightbox"><a href="#"><img src="Bild11.png"></a></div>
-<div id="img12" class="lightbox"><a href="#"><img src="Bild12.png"></a></div>
-<div id="img13" class="lightbox"><a href="#"><img src="Bild13.jpg"></a></div>
-<div id="img14" class="lightbox"><a href="#"><img src="Bild14.jpg"></a></div>
-<div id="img15" class="lightbox"><a href="#"><img src="Bild15.jpg"></a></div>
-<div id="img16" class="lightbox"><a href="#"><img src="Bild16.jpg"></a></div>
+<div id="img2" class="lightbox"><a href="#"><img src="bild2.jpg"></a></div>
+<div id="img3" class="lightbox"><a href="#"><img src="bild3.jpg"></a></div>
+<div id="img4" class="lightbox"><a href="#"><img src="bild4.jpg"></a></div>
+<div id="img5" class="lightbox"><a href="#"><img src="bild5.jpg"></a></div>
+<div id="img6" class="lightbox"><a href="#"><img src="bild6.jpg"></a></div>
+<div id="img7" class="lightbox"><a href="#"><img src="bild7.jpg"></a></div>
+<div id="img8" class="lightbox"><a href="#"><img src="bild8.png"></a></div>
+<div id="img9" class="lightbox"><a href="#"><img src="bild9.jpg"></a></div>
+<div id="img10" class="lightbox"><a href="#"><img src="bild10.jpg"></a></div>
+<div id="img11" class="lightbox"><a href="#"><img src="bild11.png"></a></div>
+<div id="img12" class="lightbox"><a href="#"><img src="bild12.png"></a></div>
+<div id="img13" class="lightbox"><a href="#"><img src="bild13.jpg"></a></div>
+<div id="img14" class="lightbox"><a href="#"><img src="bild14.jpg"></a></div>
+<div id="img15" class="lightbox"><a href="#"><img src="bild15.jpg"></a></div>
+<div id="img16" class="lightbox"><a href="#"><img src="bild16.jpg"></a></div>
 
 <footer>
 Kontakt: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
@@ -139,4 +128,3 @@ Kontakt: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
 
 </body>
 </html>
-
