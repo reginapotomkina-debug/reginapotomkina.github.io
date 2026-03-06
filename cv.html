@@ -143,10 +143,20 @@ footer {
 </section>
 
 <footer>
-Contact: <a href="mailto:regina.potomkina@gmx.net">regina.potomkina@gmx.net</a>
+Kontakt: <span id="email"></span>
 </footer>
+<script>
+(function(){
+const u = "regina.potomkina";
+const d = "gmx.net";
+const e = u + "@" + d;
 
+document.getElementById("email").innerHTML =
+'<a href="mailto:'+e+'">'+e+'</a>';
+})();
+</script>
 </body>
 </html>
+
 
 
