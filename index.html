@@ -1,160 +1,502 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regina Potomkina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regina Potomkina</title>
+  <meta name="description" content="Regina Potomkina – Visual artist and painter based in Frankfurt am Main. Studies at Kunsthochschule Kassel, class of Prof. Dierk Schmidt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --off:   #f8f8f7;
+      --ink:   #111110;
+      --mid:   #585753;
+      --faint: #aeada9;
+      --rule:  #e6e5e1;
+    }
 
-<style>
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:white;
-    color:black;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-/* HEADER */
-header {
-    text-align:center;
-    padding:40px 20px;
-    font-size:28px;
-    letter-spacing:2px;
-}
-header a {
-    text-decoration:none;
-    color:black;
-}
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* NAV */
-nav {
-    text-align:center;
-    margin-bottom:30px;
-}
-nav a {
-    margin:0 10px;
-    text-decoration:none;
-    color:black;
-    font-weight:bold;
-}
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+      height: 58px;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* GALLERY GRID */
-.gallery {
-    display:grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:15px;
-    padding:20px;
-}
-.gallery img {
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    cursor:pointer;
-    transition:0.3s;
-}
-.gallery img:hover {
-    transform:scale(1.05);
-}
+    .site-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
 
-@media(max-width:900px){
-    .gallery{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:600px){
-    .gallery{grid-template-columns:1fr;}
-}
+    nav { display: flex; gap: 2.25rem; }
 
-/* LIGHTBOX */
-#overlay {
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.95);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-}
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-#overlay img {
-    max-height:85vh;
-    max-width:90vw;
-    object-fit:contain;
-}
+    nav a:hover, nav a.active { color: var(--ink); }
 
-/* FOOTER */
-footer {
-    text-align:center;
-    padding:60px 20px;
-    font-size:14px;
-}
-</style>
+    /* ─── INTRO ─── */
+    .intro {
+      padding-top: 58px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .intro-image {
+      background: var(--off);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .intro-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .intro-image img.loaded { opacity: 1; }
+
+    .intro-text {
+      padding: clamp(3.5rem, 8vw, 8rem) clamp(2rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--rule);
+    }
+
+    .intro-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 3.8vw, 4rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em { font-style: italic; color: var(--mid); display: block; }
+
+    .intro-bio {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 46ch;
+    }
+
+    .intro-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .btn-solid {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: var(--ink);
+      color: #fff;
+      padding: 0.65rem 1.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-solid:hover { background: var(--mid); }
+
+    .btn-text {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-text:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ─── SECTION HEADER ─── */
+    .sec-head {
+      padding: 4.5rem clamp(1.5rem, 5vw, 4rem) 0;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sec-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .sec-count {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--rule);
+      margin: 0 clamp(1rem, 3vw, 3rem);
+    }
+
+    .gitem {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+      cursor: pointer;
+      aspect-ratio: 3/4;
+    }
+
+    .gitem img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(.25,.46,.45,.94), opacity 0.45s;
+      opacity: 0;
+    }
+
+    .gitem img.loaded { opacity: 1; }
+    .gitem:hover img { transform: scale(1.042); }
+
+    .gitem-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 45%, rgba(17,17,16,0.48));
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
+
+    .gitem:hover .gitem-overlay { opacity: 1; }
+
+    .gitem-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.3;
+    }
+
+    .gitem-meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(8,8,7,0.97);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.22s;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox img {
+      max-width: min(88vw, 1000px);
+      max-height: 84vh;
+      object-fit: contain;
+    }
+
+    .lb-close {
+      position: absolute; top: 1.25rem; right: 1.75rem;
+      background: none; border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 1.5rem; cursor: pointer; line-height: 1;
+      transition: color 0.2s; font-weight: 300;
+    }
+
+    .lb-close:hover { color: #fff; }
+
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.13);
+      color: rgba(255,255,255,0.45);
+      width: 42px; height: 42px;
+      cursor: pointer; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-nav:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+    .lb-prev { left: 1.25rem; }
+    .lb-next { right: 1.25rem; }
+
+    .lb-cap {
+      position: absolute; bottom: 1.5rem;
+      left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.38);
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      font-style: italic; font-family: 'Playfair Display', serif;
+      white-space: nowrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-top: 6rem;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact {
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    .footer-contact a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+
+    .footer-contact a:hover { border-color: var(--ink); }
+
+    .footer-loc {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* ─── FADE ─── */
+    .fade-up {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 820px) {
+      .intro { grid-template-columns: 1fr; min-height: auto; }
+      .intro-image { height: 58vw; min-height: 240px; }
+      .intro-text { border-left: none; border-top: 1px solid var(--rule); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .lb-nav { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-    <a href="/">REGINA POTOMKINA</a>
+  <a class="site-name" href="index.html">Regina Potomkina</a>
+  <nav>
+    <a href="index.html" class="active">Works</a>
+    <a href="cv.html">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<nav>
-    <a href="/">Gallery</a> | <a href="cv.html">CV</a>
-</nav>
-
-<section class="gallery">
-    <img src="Bild1.jpg">
-    <img src="bild2.jpg">
-    <img src="bild3.jpg">
-    <img src="bild4.jpg">
-    <img src="bild5.jpg">
-    <img src="bild6.jpg">
-    <img src="bild7.jpg">
-    <img src="bild8.png">
-    <img src="bild9.jpg">
-    <img src="bild10.jpg">
-    <img src="bild11.png">
-    <img src="bild12.png">
-    <img src="bild13.jpg">
-    <img src="bild14.jpg">
-    <img src="bild15.jpg">
-    <img src="bild16.jpg">
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-image">
+    <img src="Bild1.jpg" alt="Regina Potomkina" onload="this.classList.add('loaded')" />
+  </div>
+  <div class="intro-text fade-up">
+    <p class="intro-eyebrow">Visual Artist &amp; Painter</p>
+    <h1>Regina<br /><em>Potomkina</em></h1>
+    <p class="intro-bio">
+      My work engages with Jewish lived realities in Germany, my own biography as a Jewish contingent refugee from Ukraine, and the people and objects of my immediate surroundings. Painting serves as a means to connect personal experience with collective memory and cultural symbols — negotiating questions of identity, belonging, and continuity.
+      <br /><br />
+      Studies at Kunsthochschule Kassel, class of Prof. Dierk Schmidt. Based in Frankfurt am Main.
+    </p>
+    <div class="intro-cta">
+      <a href="#works" class="btn-solid">View Works</a>
+      <a href="cv.html" class="btn-text">Curriculum Vitae</a>
+    </div>
+  </div>
 </section>
 
-<div id="overlay">
-    <img id="overlay-img">
+<!-- WORKS -->
+<div class="sec-head fade-up" id="works">
+  <h2>Selected Works</h2>
+  <span class="sec-count">16 works</span>
+</div>
+
+<div class="gallery-grid" id="galleryGrid"></div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <span class="footer-name">Regina Potomkina</span>
+  <span class="footer-contact" id="footerEmail"></span>
+  <span class="footer-loc">Frankfurt am Main &amp; Kassel</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev">&#8592;</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lb-nav lb-next" id="lbNext">&#8594;</button>
+  <div class="lb-cap" id="lbCap"></div>
 </div>
 
 <script>
-const overlay = document.getElementById("overlay");
-const overlayImg = document.getElementById("overlay-img");
+  // ─── WORKS ─── Replace titles + meta with real data
+  const works = [
+    { src:'Bild1.jpg',  title:'Gefilte Fish', meta: 'Oil on canvas, 70 × 100 cm, 2025' },
+    { src:'bild2.jpg',  title:'Siddur. Salo. Samogon.' , meta: 'Oil on canvas, 60 × 80 cm, 2024'},
+    { src:'bild3.jpg',  title:'Borsht/Samovar' , meta: 'Oil on canvas, 70 × 100 cm, 2025'},
+    { src:'bild4.jpg',  title:'The Precious', meta: 'Oil on canvas, 100 × 100 cm, 2025' },
+    { src:'bild5.jpg',  title:'Chicken or rooster?', meta: 'Oil on canvas, 100 × 100 cm, 2025' },
+    { src:'bild6.jpg',  title:'A kosher dream' , meta: 'Oil on canvas, 60 × 80 cm, 2024'},
+    { src:'bild7.jpg',  title:'Sensual challah' , meta: 'Oil on canvas, 60 × 80 cm, 2024' },
+    { src:'bild8.png',  title:'Mazal tov', meta: 'Acrylic on canvas, 100 × 120 cm, 2023' },
+    { src:'bild9.jpg',  title:'Take down your Mezuza' , meta: 'Oil on canvas, 70 × 90 cm, 2023'},
+    { src:'bild10.jpg', title:'Don‘t wear your Magen David' , meta: 'Oil on canvas, 70 × 80 cm, 2023'},
+    { src:'bild11.png', title:'Dan II' , meta: 'Oil on canvas, 80 × 100 cm, 2023'},
+    { src:'bild12.png', title:'Dan I' , meta: 'Oil on canvas, 80 × 100 cm, 2023' },
+    { src:'bild13.jpg', title:'Ded', meta: 'Oil on canvas, 80 × 80 cm, 2025' },
+    { src:'bild14.jpg', title:'Cleaning obsession I' , meta: 'Oil on canvas, 100 × 100 cm, 2024' },
+    { src:'bild15.jpg', title:'Cleaning obsession II' , meta: 'Oil on canvas, 100 × 100 cm, 2024' },
+    { src:'bild16.jpg', title:'Caviar and Kiddush', meta: 'Oil on canvas, 60 × 80 cm, 2024' },
+  ];
 
-document.querySelectorAll(".gallery img").forEach(img => {
-    img.addEventListener("click", () => {
-        overlay.style.display = "flex";
-        overlayImg.src = img.src;
-        document.body.style.overflow = "hidden";
+  // meta example: 'Oil on canvas, 80 × 100 cm, 2024'
+
+  const grid = document.getElementById('galleryGrid');
+  works.forEach((w, i) => {
+    const el = document.createElement('div');
+    el.className = 'gitem fade-up';
+    el.innerHTML = `
+      <img src="${w.src}" alt="${w.title}" loading="lazy" onload="this.classList.add('loaded')" />
+      <div class="gitem-overlay">
+        <div class="gitem-title">${w.title}</div>
+        ${w.meta ? `<div class="gitem-meta">${w.meta}</div>` : ''}
+      </div>`;
+    el.addEventListener('click', () => openLb(i));
+    grid.appendChild(el);
+  });
+
+  // ─── LIGHTBOX ───
+  let cur = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+
+  function openLb(i) {
+    cur = i;
+    lbImg.src = works[i].src;
+    lbImg.alt = works[i].title;
+    lbCap.textContent = works[i].title + (works[i].meta ? '  ·  ' + works[i].meta : '');
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.getElementById('lbPrev').addEventListener('click', () => openLb((cur - 1 + works.length) % works.length));
+  document.getElementById('lbNext').addEventListener('click', () => openLb((cur + 1) % works.length));
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLb();
+    if (e.key === 'ArrowLeft')  openLb((cur - 1 + works.length) % works.length);
+    if (e.key === 'ArrowRight') openLb((cur + 1) % works.length);
+  });
+
+  // ─── ANTI-SPAM EMAIL (never in HTML, assembled in JS) ───
+  (function() {
+    const u = 'regina.potomkina'; // ← replace with your actual email prefix
+    const d = 'gmx.net';
+    document.getElementById('footerEmail').innerHTML =
+      'Contact: <a href="mailto:' + u + '@' + d + '">' + u + '@' + d + '</a>';
+  })();
+
+  // ─── SCROLL FADE ───
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, idx) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), idx * 50);
+        obs.unobserve(e.target);
+      }
     });
-});
+  }, { threshold: 0.06 });
 
-overlay.addEventListener("click", () => {
-    overlay.style.display = "none";
-    overlayImg.src = "";
-    document.body.style.overflow = "auto";
-});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  document.querySelector('.intro .fade-up')?.classList.add('visible');
 </script>
-
-<footer>
-Contact: <span id="email"></span>
-</footer>
-<script>
-(function(){
-const p = ["regina","potomkina","gmx","net"];
-const e = p[0] + "." + p[1] + "@" + p[2] + "." + p[3];
-
-document.getElementById("email").innerHTML =
-'<a href="mailto:'+e+'">'+e+'</a>';
-})();
-</script>
-
 </body>
 </html>
-
-
-
