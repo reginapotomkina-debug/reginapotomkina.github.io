@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Regina Potomkina</title>
   <meta name="description" content="Regina Potomkina – Visual artist and painter based in Frankfurt am Main. Studies at Kunsthochschule Kassel, class of Prof. Dierk Schmidt." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <!--
+    DSGVO-Hinweis: Diese Seite lädt keine externen Ressourcen.
+    Alle Schriften sind Systemschriften (Georgia, system-ui).
+    Kein Tracking, keine Cookies, keine externen Requests.
+  -->
   <style>
     :root {
       --white: #ffffff;
@@ -16,6 +18,11 @@
       --mid:   #585753;
       --faint: #aeada9;
       --rule:  #e6e5e1;
+
+      /* System font stacks — no external requests, DSGVO-safe */
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+                    Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +31,7 @@
     body {
       background: var(--white);
       color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 300;
       font-size: 15px;
       line-height: 1.65;
@@ -38,6 +45,7 @@
       z-index: 100;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--rule);
       height: 58px;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
@@ -47,9 +55,10 @@
     }
 
     .site-name {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-serif);
       font-size: 1rem;
       font-weight: 400;
+      font-style: italic;
       color: var(--ink);
       text-decoration: none;
       letter-spacing: 0.01em;
@@ -58,6 +67,7 @@
     nav { display: flex; gap: 2.25rem; }
 
     nav a {
+      font-family: var(--font-sans);
       font-size: 0.72rem;
       letter-spacing: 0.13em;
       text-transform: uppercase;
@@ -111,14 +121,18 @@
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-serif);
       font-size: clamp(2.4rem, 3.8vw, 4rem);
       font-weight: 400;
       line-height: 1.08;
       letter-spacing: -0.01em;
     }
 
-    h1 em { font-style: italic; color: var(--mid); display: block; }
+    h1 em {
+      font-style: italic;
+      color: var(--mid);
+      display: block;
+    }
 
     .intro-bio {
       margin-top: 2.5rem;
@@ -138,6 +152,7 @@
     }
 
     .btn-solid {
+      font-family: var(--font-sans);
       font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -152,6 +167,7 @@
     .btn-solid:hover { background: var(--mid); }
 
     .btn-text {
+      font-family: var(--font-sans);
       font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -175,8 +191,9 @@
     }
 
     .sec-head h2 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-serif);
       font-weight: 400;
+      font-style: italic;
       font-size: 1.5rem;
       letter-spacing: -0.01em;
     }
@@ -231,7 +248,7 @@
     .gitem:hover .gitem-overlay { opacity: 1; }
 
     .gitem-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-serif);
       font-style: italic;
       font-size: 0.85rem;
       color: rgba(255,255,255,0.92);
@@ -292,7 +309,7 @@
       left: 50%; transform: translateX(-50%);
       color: rgba(255,255,255,0.38);
       font-size: 0.72rem; letter-spacing: 0.1em;
-      font-style: italic; font-family: 'Playfair Display', serif;
+      font-style: italic; font-family: var(--font-serif);
       white-space: nowrap;
     }
 
@@ -309,14 +326,12 @@
     }
 
     .footer-name {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-serif);
+      font-style: italic;
       font-size: 0.9rem;
     }
 
-    .footer-contact {
-      font-size: 0.78rem;
-      color: var(--mid);
-    }
+    .footer-contact { font-size: 0.78rem; color: var(--mid); }
 
     .footer-contact a {
       color: var(--ink);
@@ -334,12 +349,27 @@
       color: var(--faint);
     }
 
+    .footer-legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-legal a {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover { color: var(--ink); }
+
     /* ─── FADE ─── */
     .fade-up {
       opacity: 0; transform: translateY(14px);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
-
     .fade-up.visible { opacity: 1; transform: none; }
 
     /* ─── RESPONSIVE ─── */
@@ -396,11 +426,15 @@
 
 <div class="gallery-grid" id="galleryGrid"></div>
 
-<!-- FOOTER -->
+<!-- FOOTER / CONTACT -->
 <footer id="contact">
   <span class="footer-name">Regina Potomkina</span>
   <span class="footer-contact" id="footerEmail"></span>
   <span class="footer-loc">Frankfurt am Main </span>
+  <span class="footer-legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </span>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -413,27 +447,25 @@
 </div>
 
 <script>
-  // ─── WORKS ─── Replace titles + meta with real data
+  // ─── WORKS ───
   const works = [
-    { src:'Bild1.jpg',  title:'Gefilte Fish', meta: 'Oil on canvas, 70 × 100 cm, 2025' },
-    { src:'bild2.jpg',  title:'Siddur. Salo. Samogon.' , meta: 'Oil on canvas, 60 × 80 cm, 2024'},
-    { src:'bild3.jpg',  title:'Borsht/Samovar' , meta: 'Oil on canvas, 70 × 100 cm, 2025'},
-    { src:'bild4.jpg',  title:'The Precious', meta: 'Oil on canvas, 100 × 100 cm, 2025' },
-    { src:'bild5.jpg',  title:'Chicken or rooster?', meta: 'Oil on canvas, 100 × 100 cm, 2025' },
-    { src:'bild6.jpg',  title:'A kosher dream' , meta: 'Oil on canvas, 60 × 80 cm, 2024'},
-    { src:'bild7.jpg',  title:'Sensual challah' , meta: 'Oil on canvas, 60 × 80 cm, 2024' },
-    { src:'bild8.png',  title:'Mazal tov', meta: 'Acrylic on canvas, 100 × 120 cm, 2023' },
-    { src:'bild9.jpg',  title:'Take down your Mezuza' , meta: 'Oil on canvas, 70 × 90 cm, 2023'},
-    { src:'bild10.jpg', title:'Don‘t wear your Magen David' , meta: 'Oil on canvas, 70 × 80 cm, 2023'},
-    { src:'bild11.png', title:'Dan II' , meta: 'Oil on canvas, 80 × 100 cm, 2023'},
-    { src:'bild12.png', title:'Dan I' , meta: 'Oil on canvas, 80 × 100 cm, 2023' },
-    { src:'bild13.jpg', title:'Ded', meta: 'Oil on canvas, 80 × 80 cm, 2025' },
-    { src:'bild14.jpg', title:'Cleaning obsession I' , meta: 'Oil on canvas, 100 × 100 cm, 2024' },
-    { src:'bild15.jpg', title:'Cleaning obsession II' , meta: 'Oil on canvas, 100 × 100 cm, 2024' },
-    { src:'bild16.jpg', title:'Caviar and Kiddush', meta: 'Oil on canvas, 60 × 80 cm, 2024' },
+    { src:'Bild1.jpg',  title:'Gefilte Fish',               meta:'Oil on canvas, 70 × 100 cm, 2025' },
+    { src:'bild2.jpg',  title:'Siddur. Salo. Samogon.',     meta:'Oil on canvas, 60 × 80 cm, 2024' },
+    { src:'bild3.jpg',  title:'Borsht/Samovar',             meta:'Oil on canvas, 70 × 100 cm, 2025' },
+    { src:'bild4.jpg',  title:'The Precious',               meta:'Oil on canvas, 100 × 100 cm, 2025' },
+    { src:'bild5.jpg',  title:'Chicken or rooster?',        meta:'Oil on canvas, 100 × 100 cm, 2025' },
+    { src:'bild6.jpg',  title:'A kosher dream',             meta:'Oil on canvas, 60 × 80 cm, 2024' },
+    { src:'bild7.jpg',  title:'Sensual challah',            meta:'Oil on canvas, 60 × 80 cm, 2024' },
+    { src:'bild8.png',  title:'Mazal tov',                  meta:'Acrylic on canvas, 100 × 120 cm, 2023' },
+    { src:'bild9.jpg',  title:'Take down your Mezuza',      meta:'Oil on canvas, 70 × 90 cm, 2023' },
+    { src:'bild10.jpg', title:'Don\'t wear your Magen David', meta:'Oil on canvas, 70 × 80 cm, 2023' },
+    { src:'bild11.png', title:'Dan II',                     meta:'Oil on canvas, 80 × 100 cm, 2023' },
+    { src:'bild12.png', title:'Dan I',                      meta:'Oil on canvas, 80 × 100 cm, 2023' },
+    { src:'bild13.jpg', title:'Ded',                        meta:'Oil on canvas, 80 × 80 cm, 2025' },
+    { src:'bild14.jpg', title:'Cleaning obsession I',       meta:'Oil on canvas, 100 × 100 cm, 2024' },
+    { src:'bild15.jpg', title:'Cleaning obsession II',      meta:'Oil on canvas, 100 × 100 cm, 2024' },
+    { src:'bild16.jpg', title:'Caviar and Kiddush',         meta:'Oil on canvas, 60 × 80 cm, 2024' },
   ];
-
-  // meta example: 'Oil on canvas, 80 × 100 cm, 2024'
 
   const grid = document.getElementById('galleryGrid');
   works.forEach((w, i) => {
@@ -451,7 +483,7 @@
 
   // ─── LIGHTBOX ───
   let cur = 0;
-  const lb = document.getElementById('lightbox');
+  const lb    = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
 
@@ -477,9 +509,10 @@
     if (e.key === 'ArrowRight') openLb((cur + 1) % works.length);
   });
 
-  // ─── ANTI-SPAM EMAIL (never in HTML, assembled in JS) ───
+  // ─── ANTI-SPAM EMAIL ───
+  // Ändere 'deine-adresse' zu deinem echten E-Mail-Prefix (vor dem @)
   (function() {
-    const u = 'regina.potomkina'; // ← replace with your actual email prefix
+    const u = 'regina.potomkina';
     const d = 'gmx.net';
     document.getElementById('footerEmail').innerHTML =
       'Contact: <a href="mailto:' + u + '@' + d + '">' + u + '@' + d + '</a>';
