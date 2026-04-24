@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz – Regina Potomkina</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --ink:   #111110;
+      --mid:   #585753;
+      --faint: #aeada9;
+      --rule:  #e6e5e1;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+      height: 58px;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 2.25rem; }
+
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--ink); }
+
+    main {
+      padding-top: 58px;
+      max-width: 680px;
+      margin: 0 auto;
+      padding-left: clamp(1.5rem, 6vw, 5rem);
+      padding-right: clamp(1.5rem, 6vw, 5rem);
+      padding-bottom: 7rem;
+    }
+
+    .page-title {
+      padding: clamp(3rem, 7vw, 5.5rem) 0 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2.5rem;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+      font-weight: 400;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.93rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-color: var(--ink); }
+
+    .highlight-box {
+      margin: 2.5rem 0;
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+      background: #fafaf9;
+    }
+
+    .highlight-box p {
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name { font-family: var(--font-serif); font-style: italic; font-size: 0.9rem; }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      border-bottom: none;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="site-name" href="index.html">Regina Potomkina</a>
+  <nav>
+    <a href="index.html">Works</a>
+    <a href="cv.html">CV</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-title">
+    <p class="eyebrow">Privacy Policy</p>
+    <h1>Datenschutz&shy;erklärung</h1>
+  </div>
+
+  <div class="highlight-box">
+    <p>
+      Diese Website erhebt, speichert und verarbeitet keine personenbezogenen Daten.
+      Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine externen
+      Dienste oder Skripte eingebunden. Es findet kein Datentransfer an Dritte statt.
+    </p>
+  </div>
+
+  <h2>Verantwortliche Person</h2>
+  <p>
+    Regina Potomkina<br />
+    <!-- DEINE ADRESSE HIER EINTRAGEN -->
+    Musterstraße 1, 60000 Frankfurt am Main<br />
+    <span id="dseEmail"></span>
+  </p>
+
+  <h2>Welche Daten werden erhoben?</h2>
+  <p>
+    Diese Website erhebt keine personenbezogenen Daten der Besucherinnen und Besucher.
+    Es werden weder Cookies gesetzt noch Web-Analyse-Werkzeuge, Social-Media-Plugins
+    oder Werbenetzwerke eingebunden.
+  </p>
+
+  <h2>Server-Logfiles (Hosting)</h2>
+  <p>
+    Diese Website wird über GitHub Pages gehostet. Beim Abruf der Seite können vom
+    Hosting-Anbieter technische Zugriffsdaten (IP-Adresse, Zeitstempel, aufgerufene
+    Seite, Browsertyp) in sogenannten Server-Logfiles gespeichert werden. Diese Daten
+    werden von GitHub erhoben und verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+    DSGVO (berechtigtes Interesse am sicheren Betrieb). Weitere Informationen:
+    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+       target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>.
+  </p>
+
+  <h2>Schriften und externe Ressourcen</h2>
+  <p>
+    Diese Website verwendet ausschließlich lokal vorhandene Systemschriften des Endgeräts.
+    Es werden keine Schriften oder sonstigen Ressourcen von externen Servern geladen
+    (keine Google Fonts, keine CDNs, keine Tracking-Pixel). Dadurch findet kein
+    Datentransfer an externe Dienste statt.
+  </p>
+
+  <h2>Kontaktaufnahme per E-Mail</h2>
+  <p>
+    Wenn Sie mit mir per E-Mail Kontakt aufnehmen, werden Ihre übermittelten Daten
+    (Name, E-Mail-Adresse, Nachrichteninhalt) ausschließlich zur Bearbeitung Ihrer
+    Anfrage verwendet und nicht an Dritte weitergegeben. Rechtsgrundlage ist
+    Art. 6 Abs. 1 lit. f DSGVO. Die Daten werden gelöscht, sobald die Anfrage
+    abschließend beantwortet ist.
+  </p>
+
+  <h2>Ihre Rechte</h2>
+  <p>
+    Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO),
+    Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO) sowie
+    Datenübertragbarkeit (Art. 20 DSGVO). Da diese Website keine personenbezogenen
+    Daten erhebt, erübrigen sich diese Rechte in der Praxis weitgehend.
+  </p>
+  <p>
+    Sie haben außerdem das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde
+    zu beschweren. Für Hessen ist dies der Hessische Beauftragte für Datenschutz und
+    Informationsfreiheit: <a href="https://datenschutz.hessen.de" target="_blank"
+    rel="noopener noreferrer">datenschutz.hessen.de</a>.
+  </p>
+
+  <h2>Aktualität dieser Erklärung</h2>
+  <p>Stand: April 2026</p>
+
+</main>
+
+<footer>
+  <span class="footer-name">Regina Potomkina</span>
+  <div class="footer-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const u = 'regina.potomkina'; // ← gleichen Wert wie in den anderen Dateien eintragen
+    const d = 'gmx.net';
+    const el = document.getElementById('dseEmail');
+    if (el) el.innerHTML = '<a href="mailto:' + u + '@' + d + '">' + u + '@' + d + '</a>';
+  })();
+</script>
+
+</body>
+</html>
